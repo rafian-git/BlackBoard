@@ -1,0 +1,1091 @@
+<html>
+    <head>
+      <title>BlackBoard</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" >
+  <link rel="apple-touch-icon" type="image/x-icon" href="apple-touch-icon.ico" >
+        <style media="screen">
+
+        body {
+          background-image: url('b.jpg');
+                  background-size: cover;
+                  background-attachment: fixed;
+                  background-position: center center;
+                  background-repeat: no-repeat;
+                  height: 100vh;
+                  max-height: 100vh;
+                  width: 100%;
+                  max-width: 100%;
+        }
+
+
+          #defaultCanvas0{
+            position: absolute;
+            left : 0px;
+            top : 55px;
+            cursor: pointer;
+          }
+          .type {
+          height: 23px;
+          width: 28px;
+          background:transparent url('type.png') no-repeat;
+
+          border: 0;
+          overflow: hidden;
+          /* IE 6/7 fallback */
+          *text-indent: -9999px;
+          }
+
+          .type:before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 150%;
+          }
+
+          .paint {
+          height: 23px;
+          width: 28px;
+          background:transparent url('paint2.png') no-repeat;
+          border: 0;
+          overflow: hidden;
+          /* IE 6/7 fallback */
+          *text-indent: -9999px;
+          }
+
+          .paint:before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 150%;
+          }
+
+          .image {
+          height: 23px;
+          width: 28px;
+          background:transparent url('image.png') no-repeat;
+          border: 0;
+          overflow: hidden;
+          /* IE 6/7 fallback */
+          *text-indent: -9999px;
+          }
+
+          .image:before {
+          content: "";
+          display: block;
+          width: 0;
+          height: 150%;
+          }
+
+          #paintImg{ background-image: transparent url('paint.png');border: none;height:30px; width:30px; opacity: 0.7; padding: 1px 0px 0px 1px;}
+          #wm{
+                      position: absolute;
+                      text-align: center;
+                      top: 20%;
+                      right: 25%;
+                      z-index: +1;
+                    }
+
+          h1{
+            position: absolute;
+            text-align: center;
+            top: 45%;
+            right: 20%;
+            opacity: 0.1;
+
+            color: white;
+            font-family: 'KG Ten Thousand Reasons', cursive;
+            z-index: -1;
+          }
+
+          #er{
+            position: absolute;
+            left: 280px;
+            top: 15px;
+            opacity: 0.6;
+            height: 24px;
+            width: 86px;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+          }
+
+          #txt{
+            visibility: hidden;
+            position: absolute;
+            left: 120px;
+            top: 15px;
+            opacity: 0.6;
+            height: 24px;
+            width: 40px;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+          }
+          /* #defaultCanvas0:hover{
+            position: absolute;
+            left : 0px;
+            top : 55px;
+            cursor: url('duster.png'), default;
+          } */
+          #histBtn{
+            position: absolute;
+            top: 34px;
+            opacity: 0.4;
+            height: 20px;
+            width: 150px;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color:#169669;
+            left: 620px;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+          }
+          #addAud{
+            position: absolute;
+            left: 180px;
+            top: 15px;
+            opacity: 0.6;
+            height: 24px;
+            width: 86px;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+          }
+
+          #range{
+            position: absolute;
+            top: 17px;
+            left: 380px;
+            opacity: 0.7;
+            width: 630px;
+            background-color: #169669;
+          }
+          #colorsLabel{
+            position: absolute;
+            top: 15px;
+            right : 280px;
+            opacity: 0.4;
+            font-size: 15px;
+            color: white;
+            font-family: "KG Ten Thousand Reasons";
+          }
+          #colors{
+            position: absolute;
+            top: 15px;
+            right : 190px;
+            opacity: 0.6;
+            height: 24px;
+            width: 86px;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+          }
+          /* #add{
+            position: absolute;
+            top: 15px;
+            right : 100px;
+            opacity: 0.6;
+            height: 24px;
+            width: 86px;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+          } */
+
+          textarea{
+            position: absolute;
+            background: transparent;
+            font-family: "KG Ten Thousand Reasons";
+            letter-spacing: 3px;
+            font-size: 20px;
+            border: 0 none;
+            outline: none;
+            color: white;
+            opacity: 0.8;
+            resize: none;
+
+          }
+          textarea:hover{
+
+            border: 1px solid #888;
+            opacity: 0.6;
+
+
+          }
+          img{
+            position: absolute;
+            max-width: 50%;
+            top: 300px;
+            left: 100px;
+            z-index: 0;
+          }
+          #button {
+            position: absolute;
+            height: 30px;
+            width: 140px;
+            background-color: white;
+            opacity: 0.5;
+            color: black;
+            box-shadow: 3px 3px 3px #888;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: bold;
+            line-height: 35px;
+            margin: 0 auto;
+            font-size: 70%;
+            z-index: 5;
+            cursor: move;
+            left: 100px;
+            top: 100px;
+        }
+
+
+
+          #center {
+              position: relative;
+              max-width: 600px;
+              z-index: 5;
+          }
+          #btn-lay{
+            cursor: pointer;
+            position: absolute;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            height: 24px;
+            width: 92px;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+            z-index: 1;
+            right: 20px;
+            opacity: 0.6;
+            top: 15;;
+          }
+
+          input[type=file] {
+            cursor: pointer;
+            position: absolute;
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            height: 24px;
+            width: 86px;
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+            z-index: 2;
+            right: 100px;
+            opacity: 0.0;
+            top: 15;
+          }
+
+          input[type=file]:before {
+            font-size: 14px;
+            font-family: "KG Ten Thousand Reasons";
+            border-radius: 4px;
+            box-shadow: 2px 2px #888888;
+            background-color: #ebf4ee;
+            opacity: 0.0;
+            z-index: 2;
+            right: 100px;
+            width: 158px;
+            height: 32px;
+            font-size: 16px;
+            line-height: 32px;
+            content: 'Select your file';
+            display: inline-block;
+            background: white;
+            border: 1px solid #000;
+            text-align: center;
+            font-family: Helvetica, Arial, sans-serif;
+          }
+
+          input[type=file]::-webkit-file-upload-button {
+            visibility: hidden;
+          }
+
+          body{
+            background-color: 0;
+          }
+
+          #handle{ position: fixed;font-size: 14px; bottom: 8px; right:30%;background-color: transparent;color: rgba(255,255,255, 0.6); border: 1;border-color: rgba(255,255,255, 0.3);border-radius: 10px;padding: 5px; width: 8%;margin-left:70% ;-webkit-transition: 0.5s; transition: 0.5s;font-weight: 900;font-family: "KG Ten Thousand Reasons";}
+                    #handle:hover{ border-color: rgba(255,255,255, 0.8);-webkit-transition: 0.5s; transition: 0.5s;}
+                    #handle:focus{ border-color: rgba(255,255,255, 0.8);outline: none;}
+                    #message{ position: fixed; bottom: 8px; right: 10%;background-color: transparent;color: rgba(255,255,255, 0.6); border: 1;border-color: rgba(255,255,255, 0.3);border-radius: 10px;padding: 5px; width: 20%;margin-left:70% ;-webkit-transition: 0.5s; transition: 0.5s;font-family: "KG Ten Thousand Reasons";}
+                    #message:hover{ border-color: rgba(255,255,255, 0.8);-webkit-transition: 0.5s; transition: 0.5s;}
+                    #message:focus{ border-color: rgba(255,255,255, 0.8);outline: none;}
+                    #output{position: absolute; background-color: transparent;color: white;top: 10%;opacity: 0.6;right: 2%;list-style-type: none; margin: 0; padding: 0;text-align: right;font-family: "KG Ten Thousand Reasons";font-size: 12px;}
+                    #feedback{position: fixed; font-size: 12px;text-align: right;font-family:'KG Ten Thousand Reasons';bottom: 36px; right: 10%;color: rgba(255,255,255, 0.6); }
+                    #send {
+                    position: fixed;
+                    bottom: 11px; right: 2%;
+                    opacity: 0.6;
+                    height: 24px;
+                    width: 7%;
+                    border-radius: 4px;
+                    box-shadow: 2px 2px #888888;
+                    background-color: #ebf4ee;
+                    font-size: 14px;
+                    font-family: "KG Ten Thousand Reasons";}
+
+        </style>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
+        <script src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ns-autogrow/1.1.6/jquery.ns-autogrow.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.9/interact.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+
+    </head>
+
+
+    <body  >
+
+        <input type="button" name="" value="Paint ✓" onclick="mode(this.value)" id="txt">
+        <input type="button" name="" value="Chalk ✓" onclick="erase()" id="er">
+        <!-- <input type="image" id="paintImg"  src="paint.png" onsubmit="mode('Paint ✓')"/>  -->
+        <!-- <button type="submit" id="paintImg" onclick="mode('Paint ✓')">text</button> -->
+        <button type="submit" class="btn type" onclick="mode('Paint ✓')"></button>
+        <button type="submit" class="btn paint" onclick="mode('Image ✓')"></button>
+        <button type="submit" class="btn image" onclick="mode('Text ✓')"></button>
+        <!-- <button type="submit" ><img id="paintImg"  src="paint.png" alt="Paint"></button> -->
+        <!-- <input type="button" value="Colors" id="colors" onclick="selectColor()"> -->
+        <label for="colors" id="colorsLabel">Color :</label>
+        <input type="color" id="colors" value="#ebebe0" onchange="selectColor()">
+        <input type="file" id="add" onchange="viewImg(this)">
+        <input onchange="hist()" type="range" name="" id="range" min="0" max="1" >
+        <input type="button" name="" value="Save Frame" onclick="makeCurrentFrame()" id="histBtn">
+        <input type="button" name="" value="+ Audio" onclick="addAudio()" id="addAud">
+        <input type="button" id="btn-lay" name="" value="Upload Image">
+        <div id="audio">
+
+        </div>
+        <div id="imgDiv">
+
+        </div>
+
+
+        <div id="canDiv" onclick="clicked()">
+
+        </div>
+
+
+        <h1 id="h1">Press AND Drag Mouse To Draw </h1>
+        <img id="wm" src="watermark.png" alt="BlackBoard"  >
+
+
+        <div id="inpDiv">
+
+        </div>
+
+
+        <div id="paraDiv">
+
+        </div>
+ <!-- chat part -->
+        <div class="container" id="output"></div>
+                      <div class="container" id="feedback"></div>
+                      <form action="javascript:void(0);">
+                      <input class="col-sm-1" id="handle" type="text" placeholder="your name" />
+                    <input class="col-sm-4" id="message" autocomplete="off" type="text" placeholder="type here to chat"/>
+                    <button class="col-sm-1" id="send">Send</button>
+                    </form>
+
+    </body>
+
+    <script>
+
+        //Declaration
+      //  document.body.style.backgroundImage = "url('b.jpg')";
+
+         var socket = io.connect('https://v0bb.herokuapp.com');
+          //var socket = io.connect('http://localhost:3000');
+
+          //-----------------chat starts
+        var message = document.getElementById('message'),
+              handle = document.getElementById('handle'),
+              btn = document.getElementById('send'),
+              output = document.getElementById('output'),
+              feedback = document.getElementById('feedback');
+
+          // Emit events
+          btn.addEventListener('click', function(){
+            socket.emit('chat', {
+                message: message.value,
+                handle: handle.value
+            });
+            message.value = "";
+          });
+
+          message.addEventListener('keypress', function(){
+            socket.emit('typing', handle.value);
+          })
+
+          // Listen for events
+          socket.on('chat', function(data){
+            feedback.innerHTML = '';
+            output.innerHTML += '<p style="display:inline;letter-spacing: 1px;">' + data.message + '</p><p style="display:inline;font-family:KG Ten Thousand Reasons"> : <strong>' + data.handle + '</strong></p> </br>';
+          });
+
+          socket.on('typing', function(data){
+            feedback.innerHTML = '<p><strong>' + data + '</strong><em> is typing a message...</em></p>';
+          });
+
+
+          //--------------chat ends
+
+
+        var imgB,eraser,ctx,c;
+        var ar = [];
+        var tx = 0;
+        var er = mm = mp = 0;
+        var paint = 1;
+        var arr = [];
+        var strokeColor = "#ebf4ee";
+        var pc = -1;
+        var pos = {
+                x1 : -1,
+                y1 : -1,
+                x2 : -1,
+                y2 : -1
+            };
+        var textData = {
+          text : '',
+          posX : -10,
+          posY : -10
+        };
+        var pData = "";
+        var count = 0;
+        var setInt = setInterval("saveFrame()", 1500);
+
+
+        document.getElementById("histBtn").style.visibility = 'hidden';
+
+
+        //-----------------
+
+
+
+        //socket data receive
+
+
+            //sketch data
+
+            socket.on('mouseR',function(pos){
+            stroke(200);
+            strokeWeight(4);
+            line(pos.x1, pos.y1, pos.x2, pos.y2);
+        });
+
+            //textarea
+
+            socket.on('txData',function(pDataS){
+              pc = pDataS.pc;
+              document.getElementById('paraDiv').innerHTML += pDataS.data;
+              //document.getElementById("p"+pDataS.pc).focus();
+
+              $('.textar').autogrow();
+        });
+
+
+            //textarea value
+
+            socket.on('val',function(arr){
+
+              for (var i = 0; i < arr.length; i++) {
+                document.getElementById('p'+i).value = arr[i];
+
+                let count = (arr[i].match(/\n/g) || []).length+1;
+
+                autosize(document.getElementById("p"+i));
+              }
+
+        });
+
+
+            //image(canvas)
+
+            socket.on('tempInner',function(tempInner){
+
+                document.getElementById('imgDiv').innerHTML += tempInner;
+            });
+
+            socket.on('imgPos',function(imgPos){
+              console.log(imgPos);
+              document.getElementById(imgPos.id).style.transform = imgPos.transform;
+
+            });
+
+            socket.on('imgSize',function(imgSize){
+              console.log(imgSize);
+              document.getElementById(imgSize.id).style.height = imgSize.height;
+              document.getElementById(imgSize.id).style.width = imgSize.width;
+            });
+
+            socket.on('audio',function(audio){
+              console.log(audio);
+              document.getElementById('audio').innerHTML += audio;
+
+              // $(document).ready(function() {
+              //   $('.button').draggable();
+              // });
+            });
+
+
+            //Erase
+
+            socket.on('eraseData',function(erPos){
+
+              ctx.clearRect(erPos.x,erPos.y,16,32);
+        });
+
+
+        //  //canvas text
+        //   socket.on('text',function(textData){
+        //     noStroke();
+        //     fill(strokeColor);
+        //     textSize(30);
+        //     textFont(eraser);
+        //     text(textData.text,textData.posX,textData.posY);
+        // });
+
+
+
+        var mic, recorder, soundFile;
+
+        var state = 0;
+
+
+        function setup() {
+
+        var canv = createCanvas(windowWidth, windowHeight-60);
+        canv.parent('canDiv');
+        frameRate(30);
+        mic = new p5.AudioIn();
+        mic.start();
+        recorder = new p5.SoundRecorder();
+        recorder.setInput(mic);
+        soundFile = new p5.SoundFile();
+        c = document.getElementById("defaultCanvas0");
+        ctx = c.getContext("2d");
+        canv.drop(gotFile);
+
+        }
+
+        //printing dropped image
+
+        function gotFile(file) {
+
+            document.getElementById("h1").style.visibility = "hidden";
+            document.getElementById("wm").style.visibility = "hidden";
+
+            if (file.type === 'image') {
+
+                 var temp,fileData;
+                 var img = createImg(file.data).hide();
+                 var img1 = new Image();
+                 img1.onload = function(){
+
+                     temp = img.height*(300/img.width);
+
+                     fileData = {
+                         img : file.data,
+                         x : mouseX-100,
+                         y : mouseY,
+                         h : temp
+                     };
+                     socket.emit('img',fileData);
+                     ctx.drawImage(img1, mouseX-100, mouseY,300,img.height*(300/img.width));
+                 };
+
+                 img1.src = file.data;
+
+
+            }
+
+            else {
+              console.log('Not an image file!');
+            }
+        }
+
+
+        function mouseMoved() {
+          mm = 1;
+        }
+
+        function erase() {
+
+          if (document.getElementById("er").value == 'Chalk ✓') {
+            er = 1;
+            document.getElementById("er").value = 'Duster ✓';
+            document.getElementById("txt").value = 'Paint ✓';
+            document.getElementById("er").style.backgroundColor = '#893949';
+            document.getElementById("defaultCanvas0").style.cursor = "url('duster.png'),default";
+          }
+          else{
+            er = 0;
+            document.getElementById("er").value = 'Chalk ✓';
+            document.getElementById("er").style.backgroundColor = '#ebf4ee';
+
+            if (document.getElementById("txt").value == 'Text ✓' ) {
+              $('#defaultCanvas0').css('cursor','text');
+
+            }
+            else {
+              $('#defaultCanvas0').css('cursor','pointer');
+            }
+
+
+          }
+        }
+
+
+        //changes mode
+
+        function mode(val) {
+            if (val == 'Paint ✓') {
+              for (var i = 0; i < document.getElementsByClassName('textar').length; i++) {
+                  document.getElementsByClassName('textar')[i].disabled = false;
+
+              }
+                document.getElementById("er").value = 'Chalk ✓';
+                document.getElementById("er").style.backgroundColor = '#ebf4ee';
+                paint = 0;
+                document.getElementById("txt").value = 'Text ✓';
+                er = 0;
+                $('#defaultCanvas0').css('cursor','text');
+                //document.getElementsByClassName("images").style.zIndex = "0";
+                var q = document.getElementsByClassName("images");
+                for (var i = 0; i < q.length; i++) {
+                  q[i].style.zIndex = "0";
+                }
+            }
+
+            else{
+
+                if (val == 'Text ✓') {
+
+                    paint = 2;
+                    for (var i = 0; i < document.getElementsByClassName('textar').length; i++) {
+                        document.getElementsByClassName('textar')[i].disabled = true;
+
+                    }
+                    document.getElementById("txt").value = 'Image ✓';
+                    er = 0;
+                    $('#defaultCanvas0').css('cursor','pointer');
+                    $(".textar").prop("disabled", true);
+                    var q = document.getElementsByClassName("images");
+                    for (var i = 0; i < q.length; i++) {
+                      q[i].style.zIndex = "1";
+
+                    }
+                }
+
+                else {
+
+                    paint = 1;
+                    document.getElementById("txt").value = 'Paint ✓';
+                    //document.getElementsByClassName("textarea").disabled = true;
+
+                    for (var i = 0; i < document.getElementsByClassName('textar').length; i++) {
+                        document.getElementsByClassName('textar')[i].disabled = true;
+
+                    }
+
+                    $('#defaultCanvas0').css('cursor','pointer');
+                    $(".textar").prop("disabled", true);
+
+                    var q = document.getElementsByClassName("images");
+                    for (var i = 0; i < q.length; i++) {
+                      q[i].style.zIndex = "0";
+                    }
+                }
+
+            }
+        }
+
+
+
+        function writeText(id,e) {
+
+            if (paint==0) {
+
+                id = id.substr(1);
+
+                if(e.keyCode == 13){
+
+                  document.getElementById("i"+id).value += "<br>";
+
+                }
+
+                document.getElementById("p"+id).innerHTML += document.getElementById("i"+id).value;
+
+            }
+
+        }
+
+
+        function getFocused(id) {
+
+          document.getElementById("p"+id).focus();
+
+        }
+
+
+        //sends the textarea value
+
+        function taVal(id) {
+
+            let temp = document.getElementById(id).value;
+
+            id = id.substr(1);
+            id = parseInt(id);
+            arr[id] = temp;
+            socket.emit("val",arr);
+        }
+
+
+        // function editText(id) {
+        //   id = id.substr(1);
+        //   document.getElementById("i"+id).focus();
+        //   document.getElementById("i"+id).value = document.getElementById("p"+id).innerHTML;
+        // }
+
+
+
+
+        function clicked() {
+
+            if (paint == 0) {
+
+                pc++;
+                pData = "<textarea class = 'textar' onkeyup = 'taVal(this.id)' autofocus rows='2' cols='20' id='p"+pc+"' style='margin-left:"+(mouseX-10)+"px; margin-top:"+(mouseY+18)+"px;'></textarea>";
+                document.getElementById('paraDiv').innerHTML += pData;
+                document.getElementById("p"+pc).focus();
+                getFocused(pc);
+                autosize(document.getElementById("p"+pc));
+                var pDataS = {
+                  data : pData,
+                  pc : pc
+                };
+
+                socket.emit('txData',pDataS);
+                for (var i = 0; i < arr.length; i++) {
+                  document.getElementById('p'+i).value = arr[i];
+                }
+            }
+
+
+        }
+
+        function mousePressed() {
+
+            document.getElementById('h1').style.visibility = "hidden";
+            document.getElementById("wm").style.visibility = "hidden";
+
+
+            mp = 1;
+            pos.x1 = mouseX;
+            pos.y1 = mouseY;
+
+        }
+
+
+
+        function mouseReleased() {
+
+            mp = 0;
+            mm = 0;
+
+        }
+
+        //draw on the canvas
+        function draw() {
+
+              if (er==1 ) {
+
+                  if (mp==1) {
+                      pos.x1 = mouseX;
+                      pos.y1 = mouseY;
+
+
+                      ctx.clearRect(pos.x1-8,pos.y1-8,16,32);
+                      var erPos = {
+                        x : pos.x1-8,
+                        y : pos.y1-8
+                      };
+                      socket.emit('eraseData',erPos);
+                  }
+
+
+          }
+
+              else {
+
+                    if (mp == 1 && mm == 1 && paint == 1 ) {
+
+                          var dx = mouseX - pmouseX;
+                          var dy = mouseY - pmouseY;
+                          if (dx<0) {
+                            dx = dx*(-1)
+                          }
+                          if (dy<0) {
+                            dy = dy*(-1);
+                          }
+                          if (dx>1 || dy>1  ) {
+                            pos.x1 = mouseX;
+                            pos.y1 = mouseY;
+                            pos.x2 = pmouseX;
+                            pos.y2 = pmouseY;
+
+
+                            if(pos.x2 !== -1 && pos.y2 !== -1){
+                                stroke(strokeColor);
+                                strokeWeight(4);
+                                line(pos.x1, pos.y1, pos.x2, pos.y2);
+                                socket.emit('mouseS',pos);
+                                //pixelDensity(2);
+
+                                }
+                            }
+                        }
+                  }
+        }
+
+        //select sketch color
+
+        function selectColor() {
+strokeColor= document.getElementById("colors").value;
+
+
+            // if (strokeColor == "#ebf4ee") {
+            //   strokeColor = "#8eceb8";
+            // }
+            // else if (strokeColor == "#8eceb8") {
+            //   strokeColor = "#f7e1ef";
+            // }
+            // else {
+            //   strokeColor = "#ebf4ee";
+            // }
+            document.getElementById("colors").style.background = strokeColor;
+
+        }
+
+
+        //saves selected frame from history
+
+        function saveFrame() {
+
+            document.getElementById("range").max = ar.length;
+            document.getElementById("range").value = document.getElementById("range").max;
+            if (ar[count-1] != c.toDataURL()) {
+              ar[count] = c.toDataURL();
+              count++;
+            }
+
+            if (count==75) {
+              count = 0;
+            }
+        }
+
+        //check previous sketch history
+
+        function hist() {
+
+            clearInterval(setInt);
+            clear();
+            document.getElementById("histBtn").style.visibility = 'visible';
+
+            var img = createImg(ar[document.getElementById("range").value]).hide();
+            var img1 = new Image();
+            img1.onload = function(){
+
+              ctx.drawImage(img1, 0, 0,1280,600);
+            };
+
+            img1.src = ar[document.getElementById("range").value];
+
+            if (document.getElementById("range").value == document.getElementById("range").max) {
+
+              document.getElementById("histBtn").style.visibility = 'hidden';
+              setInt = setInterval("saveFrame()", 2000);
+            }
+
+        }
+
+        //saves selected frame as current frame
+        function makeCurrentFrame() {
+
+           setInt = setInterval("saveFrame()", 2000);
+           document.getElementById("histBtn").style.visibility = 'hidden';
+
+        }
+
+        //go to imgMode when an image is imported
+        function imgMode() {
+
+            paint = 2;
+            document.getElementById("txt").value = 'Image ✓';
+            er = 0;
+            //$('#defaultCanvas0').css('cursor','default');
+            $(".textar").prop("disabled", true);
+            var q = document.getElementsByClassName("images");
+            for (var i = 0; i < q.length; i++) {
+              q[i].style.zIndex = "1";
+            }
+        }
+
+        //imports an image
+        function viewImg(input) {
+
+            if (input.files && input.files[0]) {
+
+              var reader = new FileReader();
+              reader.onload = function (e) {
+                var imgC = document.getElementsByClassName('images').length + 1;
+                $('img0').attr('src', e.target.result)
+                var tempInner = "<img onload='imgMode()' class = 'images' id='img"+imgC+"' src='"+reader.result+"' width = '300'>";
+                document.getElementById("imgDiv").innerHTML+= tempInner ;
+                socket.emit('tempInner',tempInner);
+              };
+              reader.readAsDataURL(input.files[0]);
+
+
+            }
+
+
+        }
+
+        function imgSel(event) {
+          console.log(event);
+          console.log(1);
+        }
+        //image resize
+
+        interact('.images')
+          .draggable({
+
+            inertia: true,
+            onmove: dragMoveListener,
+            restrict: {
+              restriction: 'parent',
+              elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
+            },
+          })
+          .resizable({
+            // resize from all edges and corners
+            edges: { left: true, right: true, bottom: true, top: true },
+
+            // keep the edges inside the parent
+            restrictEdges: {
+              outer: 'parent',
+              endOnly: true,
+            },
+
+            // minimum size
+            restrictSize: {
+              min: { width: 100, height: 50 },
+              max: { width: 600, height: 300 }
+            },
+
+            inertia: true,
+          })
+          .on('resizemove', function (event) {
+            var target = event.target,
+                x = (parseFloat(target.getAttribute('data-x')) || 0),
+                y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+            // update the element's style
+            target.style.width  = event.rect.width + 'px';
+            target.style.height = event.rect.height + 'px';
+
+            // translate when resizing from top or left edges
+            x += event.deltaRect.left;
+            y += event.deltaRect.top;
+
+
+            target.style.webkitTransform = target.style.transform =
+                'translate(' + mouseX-130 + 'px,' + mouseY-272 + 'px)';
+
+            target.setAttribute('data-x', mouseX-130);
+            target.setAttribute('data-y', mouseY-272);
+            var imgSize = {
+              id : event.target.id,
+              height : target.style.height,
+              width : target.style.width
+            };
+            socket.emit('imgSize',imgSize);
+          });
+
+          function dragMoveListener (event) {
+            var target = event.target,
+                // keep the dragged position in the data-x/data-y attributes
+                x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+                y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+                var imgPos = {
+                  id : event.target.id,
+                  transform : document.getElementById(target.id).style.transform
+                };
+                socket.emit('imgPos',imgPos);
+            // translate the element
+            target.style.webkitTransform =
+            target.style.transform =
+              'translate(' + (mouseX-130) + 'px, ' + (mouseY-272) + 'px)';
+            // update the posiion attributes
+            target.setAttribute('data-x', mouseX-130);
+            target.setAttribute('data-y', mouseY-272);
+      }
+
+      //add audio Marker
+      var tempBtn;
+      function addAudio() {
+        tempBtn = "<div id='center'><div class='button' id='button' ondblclick='soundFile.play();'>Double Click to Play</div></div>";
+        document.getElementById('audio').innerHTML += "<div id='center'><div class='button' id='button' ondblclick='play(this.id)'>Double Click to Record</div></div>";
+
+        $(document).ready(function() {
+          $('.button').draggable();
+        });
+        mode('Text ✓');
+      }
+      function play(id) {
+
+
+        if (state === 0 && mic.enabled) {
+          document.getElementById('button').innerHTML = 'Double Click to Stop';
+          recorder.record(soundFile);
+          state++;
+      }
+
+        else if (state === 1) {
+          document.getElementById('button').innerHTML = 'Double Click to Play'
+          recorder.stop();
+          var audio = tempBtn;
+          console.log(audio);
+          socket.emit('audio',audio);
+          state++;
+        }
+
+        else if (state === 2) {
+          document.getElementById('button').innerHTML = 'Double Click to Record'
+          soundFile.play();
+          state = 0;
+        }
+      }
+
+
+    </script>
+
+</html>
